@@ -98,7 +98,7 @@ public class MainActivity extends Activity{
                         updateSoundStatus("PlaySound3");
 
                     }
-                    else if(orientation[1] >= -1.7 && orientation[1] < -1.2 && orientation[2] > -0.4 && orientation[2] <= 0.4)
+                    else if(orientation[1] >= -1.7 && orientation[1] < -1.2 && (orientation[2] > -0.1 && orientation[2] <= 0.6 || orientation[2] > 2.8 && orientation[2] <= 3.2))
                     {
                         playSound(sound4);
                         updateSoundStatus("PlaySound4");
