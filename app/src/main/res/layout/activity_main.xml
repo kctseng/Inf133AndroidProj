@@ -9,47 +9,24 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp">
+        android:layout_alignParentStart="true">
 
         <TextView
-            android:layout_width="125dp"
-            android:layout_height="46dp"
-            android:text="New Text"
-            android:id="@+id/editText2"
-            android:layout_row="28"
-            android:layout_column="8" />
-
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="46dp"
-            android:text="New Text"
-            android:id="@+id/editText"
-            android:layout_row="27"
-            android:layout_column="8" />
-
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="46dp"
-            android:text="New Text"
-            android:id="@+id/editText3"
-            android:layout_row="29"
-            android:layout_column="8" />
-
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="46dp"
-            android:text="New Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/editText4"
-            android:layout_row="41"
-            android:layout_column="8" />
+            android:layout_row="35"
+            android:layout_column="0"
+            android:fontFamily="impact"
+            android:textSize="80px"
+            android:layout_columnSpan="1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SpongeBob"
             android:id="@+id/spongeBtn"
-            android:layout_row="42"
+            android:layout_row="44"
             android:layout_column="0" />
 
         <Button
@@ -57,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Minion"
             android:id="@+id/minBtn"
-            android:layout_row="42"
-            android:layout_column="15" />
+            android:layout_row="43"
+            android:layout_column="0" />
     </GridLayout>
 </RelativeLayout>

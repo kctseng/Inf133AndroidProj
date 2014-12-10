@@ -45,6 +45,7 @@ public class MainActivity extends Activity{
     private int currentSound = 0;
     private Button minBut;
     private Button spongeBut;
+    private boolean isMinion;
 
     private void setMin()
     {
@@ -53,6 +54,7 @@ public class MainActivity extends Activity{
         sound3 = getApplicationContext().getResources().openRawResourceFd(R.raw.bana);
         sound4 = getApplicationContext().getResources().openRawResourceFd(R.raw.naaa);
         sound5 = getApplicationContext().getResources().openRawResourceFd(R.raw.potato);
+        isMinion = true;
     }
 
     private void setSponge()
@@ -62,6 +64,7 @@ public class MainActivity extends Activity{
         sound3 = getApplicationContext().getResources().openRawResourceFd(R.raw.q3);
         sound4 = getApplicationContext().getResources().openRawResourceFd(R.raw.answer);
         sound5 = getApplicationContext().getResources().openRawResourceFd(R.raw.last);
+        isMinion = false;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +75,9 @@ public class MainActivity extends Activity{
         {
             orientation[i] = 0;
         }
-        xView = (TextView) findViewById(R.id.editText);
-        yView = (TextView) findViewById(R.id.editText2);
-        zView = (TextView) findViewById(R.id.editText3);
+//        xView = (TextView) findViewById(R.id.editText);
+//        yView = (TextView) findViewById(R.id.editText2);
+//        zView = (TextView) findViewById(R.id.editText3);
         minBut = (Button) findViewById(R.id.minBtn);
         spongeBut = (Button) findViewById(R.id.spongeBtn);
         setMin();
@@ -110,39 +113,69 @@ public class MainActivity extends Activity{
                 {
                     SensorManager.remapCoordinateSystem(M, SensorManager.AXIS_X, SensorManager.AXIS_Y, outR);
                     SensorManager.getOrientation(outR, orientation);
-                    updateVal();
+                    //updateVal();
                     if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > -0.2 && orientation[2] <= 0.2)
                     {
                         playSound(sound1, 1);
-                        updateSoundStatus("PlaySound1");
+                        if(isMinion)
+                        {
+                            updateSoundStatus("Ba");
+                        }
+                        else {
+                            updateSoundStatus("Who lives in the pineapple under the sea?");
+                        }
                     }
                     else if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > -3.2 && orientation[2] <= -2.8)
                     {
                         playSound(sound2, 2);
-                        updateSoundStatus("PlaySound2");
+                        if(isMinion)
+                        {
+                            updateSoundStatus("NaNa");
+                        }
+                        else {
+                            updateSoundStatus("Absorbant and yellow and porous is he");
+                        }
 
                     }
                     else if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > 1.3 && orientation[2] <= 1.65)
                     {
                         playSound(sound3, 3);
-                        updateSoundStatus("PlaySound3");
+                        if(isMinion)
+                        {
+                            updateSoundStatus("Bana");
+                        }
+                        else {
+                            updateSoundStatus("If nautical nonsense be something you wish");
+                        }
 
                     }
                     else if(orientation[1] >= -1.7 && orientation[1] < -1.2 && (orientation[2] > -0.1 && orientation[2] <= 0.6 || orientation[2] > 2.8 && orientation[2] <= 3.2))
                     {
                         playSound(sound4, 4);
-                        updateSoundStatus("PlaySound4");
+                        if(isMinion)
+                        {
+                            updateSoundStatus("Naaaa~~~");
+                        }
+                        else {
+                            updateSoundStatus("SPONGEBOB SQUAREPANTS");
+                        }
 
                     }
                     else if(orientation[2] >= -1.5 && orientation[2] < -1.2 && orientation[1] > -0.2 && orientation[1] <= 0.2)
                     {
                         playSound(sound5, 5);
-                        updateSoundStatus("PlaySound5");
+                        if(isMinion)
+                        {
+                            updateSoundStatus("Potato");
+                        }
+                        else {
+                            updateSoundStatus("Spongebob squarepants X 3");
+                        }
 
                     }
                     else
                     {
-                        updateSoundStatus("none");
+                        //updateSoundStatus("none");
                         currentSound = 0;
                     }
                 }
@@ -154,7 +187,7 @@ public class MainActivity extends Activity{
         };
         mediaPlayer = new MediaPlayer();
 
-        updateVal();
+        //updateVal();
 
     }
 
@@ -203,26 +236,26 @@ public class MainActivity extends Activity{
         }
     }
 
-    private void updateVal() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                xView.setText("X Value = " + orientation[0]);
-            }
-        });
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                yView.setText("Y Value = " + orientation[1]);
-            }
-        });
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                zView.setText("Z Value = " + orientation[2]);
-            }
-        });
-    }
+//    private void updateVal() {
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                xView.setText("X Value = " + orientation[0]);
+//            }
+//        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                yView.setText("Y Value = " + orientation[1]);
+//            }
+//        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                zView.setText("Z Value = " + orientation[2]);
+//            }
+//        });
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
