@@ -5,36 +5,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="71dp"
-        android:inputType="text" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:inputType="text" />
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="46dp"
+            android:text="New Text"
+            android:id="@+id/editText2"
+            android:layout_row="28"
+            android:layout_column="8" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:inputType="text" />
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="46dp"
+            android:text="New Text"
+            android:id="@+id/editText"
+            android:layout_row="27"
+            android:layout_column="8" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText4"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp" />
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="46dp"
+            android:text="New Text"
+            android:id="@+id/editText3"
+            android:layout_row="29"
+            android:layout_column="8" />
+
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="46dp"
+            android:text="New Text"
+            android:id="@+id/editText4"
+            android:layout_row="41"
+            android:layout_column="8" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SpongeBob"
+            android:id="@+id/spongeBtn"
+            android:layout_row="42"
+            android:layout_column="0" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minion"
+            android:id="@+id/minBtn"
+            android:layout_row="42"
+            android:layout_column="15" />
+    </GridLayout>
 </RelativeLayout>
