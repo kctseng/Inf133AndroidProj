@@ -1,7 +1,6 @@
 package com.example.kuanchi.sounds;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -15,9 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.io.IOException;
-
 
 public class MainActivity extends Activity{
 
@@ -45,7 +42,8 @@ public class MainActivity extends Activity{
     private int currentSound = 0;
     private Button minBut;
     private Button spongeBut;
-    private boolean isMinion;
+    private int currentSong;
+    private String[] lyrics;
 
     private void setMin()
     {
@@ -54,7 +52,7 @@ public class MainActivity extends Activity{
         sound3 = getApplicationContext().getResources().openRawResourceFd(R.raw.bana);
         sound4 = getApplicationContext().getResources().openRawResourceFd(R.raw.naaa);
         sound5 = getApplicationContext().getResources().openRawResourceFd(R.raw.potato);
-        isMinion = true;
+        currentSong = 0;
     }
 
     private void setSponge()
@@ -64,7 +62,7 @@ public class MainActivity extends Activity{
         sound3 = getApplicationContext().getResources().openRawResourceFd(R.raw.q3);
         sound4 = getApplicationContext().getResources().openRawResourceFd(R.raw.answer);
         sound5 = getApplicationContext().getResources().openRawResourceFd(R.raw.last);
-        isMinion = false;
+        currentSong = 1;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +76,8 @@ public class MainActivity extends Activity{
 //        xView = (TextView) findViewById(R.id.editText);
 //        yView = (TextView) findViewById(R.id.editText2);
 //        zView = (TextView) findViewById(R.id.editText3);
+        lyrics = new String[] {"Ba", "Nana", "Bana", "Naaa~", "Potato",
+                "Who lives in the pineapple under the sea?", "Absorbant and yellow and porous is he", "If nautical nonsense be something you wish", "SPONGEBOB SQUAREPANTS", "Spongebob squarepants X 3"};
         minBut = (Button) findViewById(R.id.minBtn);
         spongeBut = (Button) findViewById(R.id.spongeBtn);
         setMin();
@@ -117,61 +117,22 @@ public class MainActivity extends Activity{
                     if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > -0.2 && orientation[2] <= 0.2)
                     {
                         playSound(sound1, 1);
-                        if(isMinion)
-                        {
-                            updateSoundStatus("Ba");
-                        }
-                        else {
-                            updateSoundStatus("Who lives in the pineapple under the sea?");
-                        }
                     }
                     else if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > -3.2 && orientation[2] <= -2.8)
                     {
                         playSound(sound2, 2);
-                        if(isMinion)
-                        {
-                            updateSoundStatus("NaNa");
-                        }
-                        else {
-                            updateSoundStatus("Absorbant and yellow and porous is he");
-                        }
-
                     }
                     else if(orientation[1] > -0.2 && orientation[1] <= 0.2 && orientation[2] > 1.3 && orientation[2] <= 1.65)
                     {
                         playSound(sound3, 3);
-                        if(isMinion)
-                        {
-                            updateSoundStatus("Bana");
-                        }
-                        else {
-                            updateSoundStatus("If nautical nonsense be something you wish");
-                        }
-
                     }
                     else if(orientation[1] >= -1.7 && orientation[1] < -1.2 && (orientation[2] > -0.1 && orientation[2] <= 0.6 || orientation[2] > 2.8 && orientation[2] <= 3.2))
                     {
                         playSound(sound4, 4);
-                        if(isMinion)
-                        {
-                            updateSoundStatus("Naaaa~~~");
-                        }
-                        else {
-                            updateSoundStatus("SPONGEBOB SQUAREPANTS");
-                        }
-
                     }
                     else if(orientation[2] >= -1.5 && orientation[2] < -1.2 && orientation[1] > -0.2 && orientation[1] <= 0.2)
                     {
                         playSound(sound5, 5);
-                        if(isMinion)
-                        {
-                            updateSoundStatus("Potato");
-                        }
-                        else {
-                            updateSoundStatus("Spongebob squarepants X 3");
-                        }
-
                     }
                     else
                     {
@@ -180,15 +141,12 @@ public class MainActivity extends Activity{
                     }
                 }
             }
-
             @Override
             public void onAccuracyChanged(Sensor sensor, int i) {
             }
         };
         mediaPlayer = new MediaPlayer();
-
         //updateVal();
-
     }
 
     private void updateSoundStatus(final String sound) {
@@ -230,6 +188,7 @@ public class MainActivity extends Activity{
             else{
                 currentSound = num;
             }
+            updateSoundStatus(lyrics[currentSong*5+num-1]);
         }
         catch (IOException e) {
             Log.d("Media Player Problem: ", "Media Player cannot play");
